@@ -20,13 +20,13 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { CardComponent } from './card/card.component';
+import { HabitsComponent } from './habits/habits.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    CardComponent
+    HabitsComponent
   ],
   imports: [
     BrowserModule,

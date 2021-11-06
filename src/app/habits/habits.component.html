@@ -1,0 +1,29 @@
+<div class="card my-2">
+  <div class="card-body">
+    <h5 class="card-title">Habits</h5>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Su</th>
+          <th scope="col">Mo</th>
+          <th scope="col">Tu</th>
+          <th scope="col">We</th>
+          <th scope="col">Th</th>
+          <th scope="col">Fr</th>
+          <th scope="col">Sa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let habit of habits">
+          <th scope="row">{{habit.name}}</th>
+          <td *ngFor="let index of createRange(7)">
+            <ng-template *ngIf="habit.days[index]; then thenBlock; else elseBlock"></ng-template>
+            <ng-template #thenBlock>✓</ng-template>
+            <ng-template #elseBlock>X</ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
