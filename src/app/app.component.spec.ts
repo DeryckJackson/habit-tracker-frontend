@@ -26,10 +26,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('habit-tracker-frontend');
   });
 
-  it('should render title', () => {
+  it('should render div .container', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('habit-tracker-frontend app is running!');
+    expect(compiled.querySelector('div .container')).toBeTruthy();
   });
 });
