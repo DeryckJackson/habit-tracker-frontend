@@ -9,10 +9,18 @@ import { HABITS } from '../habit-mock';
 })
 export class HabitsComponent implements OnInit {
   habits = HABITS;
+  weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   constructor() { }
 
   ngOnInit(): void {
+    const currentDay = Date().slice(0, 3);
+    const dayIndex: number = this.weekdays.findIndex((i) => i == currentDay);
+    for (let i = 0; i < dayIndex; i++) {
+      const shiftDay = this.weekdays.shift()
+      this.weekdays.push(shiftDay!);
+    }
+
   }
 
   toggleTask(habit: Habit, dayIndex: number): void {
