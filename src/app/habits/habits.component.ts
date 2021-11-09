@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Habit } from 'src/habit';
+import { Habit } from '../data-types';
 import { HABITS } from '../habit-mock';
 
 @Component({
@@ -9,7 +9,7 @@ import { HABITS } from '../habit-mock';
 })
 export class HabitsComponent implements OnInit {
   habits = HABITS;
-  weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  weekdays = ['Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon', 'Sun'];
 
   constructor() { }
 
@@ -23,9 +23,13 @@ export class HabitsComponent implements OnInit {
 
   }
 
-  toggleTask(habit: Habit, dayIndex: number): void {
+  toggleEntryValue(habit: Habit, dayIndex: number): void {
     const habitIndex = this.habits.findIndex(h => h == habit);
-    this.habits[habitIndex].days[dayIndex] = this.habits[habitIndex].days[dayIndex] ? false : true;
+    if (this.habits[habitIndex].entryList[dayIndex].value == 0) {
+      this.habits[habitIndex].entryList[dayIndex].value = 1;
+    } else {
+      this.habits[habitIndex].entryList[dayIndex].value = 0
+    }
   };
 
   createRange(num: number): number[] {

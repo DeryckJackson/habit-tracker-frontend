@@ -1,4 +1,4 @@
-<div class="card my-2">
+<div class="card my-2 overflow-auto">
   <div class="card-body">
     <h5 class="card-title">Habits</h5>
     <table class="table table-bordered text-center">
@@ -12,8 +12,8 @@
         <tr *ngFor="let habit of habits">
           <th scope="row">{{habit.name}}</th>
           <td *ngFor="let index of createRange(7)">
-            <button class="btn btn-secondary" (click)="toggleTask(habit, index)">
-              <ng-template *ngIf="habit.days[index]; then thenBlock; else elseBlock"></ng-template>
+            <button class="btn btn-secondary" (click)="toggleEntryValue(habit, index)">
+              <ng-template *ngIf="habit.entryList[index].value == 1; then thenBlock; else elseBlock"></ng-template>
               <ng-template #thenBlock>✓</ng-template>
               <ng-template #elseBlock>X</ng-template>
             </button>
@@ -21,5 +21,6 @@
         </tr>
       </tbody>
     </table>
+    <button class="btn btn-primary">Add</button>
   </div>
 </div>
