@@ -1,0 +1,26 @@
+<div class="card my-2 overflow-auto">
+  <div class="card-body">
+    <h5 class="card-title">Habits</h5>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col" *ngFor="let day of weekdays">{{day}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let habit of habits">
+          <th scope="row">{{habit.name}}</th>
+          <td *ngFor="let index of createRange(7)">
+            <button class="btn btn-secondary" (click)="toggleEntryValue(habit, index)">
+              <ng-template *ngIf="habit.entryList[index].value == 1; then thenBlock; else elseBlock"></ng-template>
+              <ng-template #thenBlock>✓</ng-template>
+              <ng-template #elseBlock>X</ng-template>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-primary">Add</button>
+  </div>
+</div>
