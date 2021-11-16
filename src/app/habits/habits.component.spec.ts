@@ -1,24 +1,33 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { HabitsComponent } from './habits.component';
 import { Habit } from '../data-types'
+import { HabitsService } from '../services/habits.service';
+import { getTestHabits } from '../services/testing/test-habits';
+import { of } from 'rxjs';
 
 describe('HabitsComponent', () => {
   let component: HabitsComponent;
   let fixture: ComponentFixture<HabitsComponent>;
+  let getHabitsSpy;
+  const HABITS = getTestHabits()
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [HabitsComponent]
-    })
-      .compileComponents();
-  });
+  beforeEach(waitForAsync(() => {
+    const habitsService = jasmine.createSpyObj('HabitsService', ['getHabits']);
+    getHabitsSpy = habitsService.getHabits.and.returnValue(of(HABITS));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HabitsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      declarations: [HabitsComponent],
+      providers: [{ provide: HabitsService, useValue: habitsService }]
+    }).compileComponents()
+      .then(() => {
+        fixture = TestBed.createComponent(HabitsComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      })
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();

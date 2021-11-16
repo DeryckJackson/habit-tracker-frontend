@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Habit } from '../data-types';
-import { HABITS } from '../habit-mock';
+import { HabitsService } from '../services/habits.service';
 
 @Component({
   selector: 'app-habits',
@@ -8,10 +8,10 @@ import { HABITS } from '../habit-mock';
   styleUrls: ['./habits.component.scss']
 })
 export class HabitsComponent implements OnInit {
-  habits = HABITS;
+  habits: Habit[] = [];
   weekdays = ['Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon', 'Sun'];
 
-  constructor() { }
+  constructor(private habitsService: HabitsService) { }
 
   ngOnInit(): void {
     const currentDay = Date().slice(0, 3);
@@ -20,7 +20,12 @@ export class HabitsComponent implements OnInit {
       const shiftDay = this.weekdays.shift()
       this.weekdays.push(shiftDay!);
     }
+    this.getHabits();
+  }
 
+  getHabits(): void {
+    this.habitsService.getHabits()
+      .subscribe(habits => this.habits = habits)
   }
 
   toggleEntryValue(habit: Habit, dayIndex: number): void {
@@ -39,5 +44,4 @@ export class HabitsComponent implements OnInit {
     }
     return range;
   }
-
 }
