@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HabitsComponent } from './habits/habits.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { HabitsService } from 'src/app/services/habits.service'
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -12,7 +13,6 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        HabitsComponent,
         TopBarComponent
       ],
     }).compileComponents();
@@ -24,10 +24,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'habit-tracker-frontend'`, () => {
+  it(`should have as title 'Habit Tracker'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('habit-tracker-frontend');
+    expect(app.title).toEqual('Habit Tracker');
   });
 
   it('should render div .container', () => {
