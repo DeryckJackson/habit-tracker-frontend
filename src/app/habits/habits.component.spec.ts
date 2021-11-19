@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClientModule } from '@angular/common/http';
 import { HabitsComponent } from './habits.component';
 import { Habit } from '../data-types'
 import { HabitsService } from '../services/habits.service';
