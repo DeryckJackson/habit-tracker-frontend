@@ -1,0 +1,20 @@
+a {
+  color: #333;
+  text-decoration: none;
+  background-color: #EEE;
+  width: 100%;
+  margin: .5em;
+  padding: .5em;
+  height: 1.6em;
+  border-radius: 4px;
+}
+
+a:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+}
+
+a:active {
+  background-color: #525252;
+  color: #fafafa;
+}
