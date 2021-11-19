@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from '../app/services/in-memory-data.service';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { HabitsComponent } from './habits/habits.component';
+import { HabitComponent } from './habit/habit.component';
 import { HabitDetailComponent } from './habit-detail/habit-detail.component';
 import { FormsModule } from '@angular/forms';
 
@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     TopBarComponent,
-    HabitsComponent,
+    HabitComponent,
     HabitDetailComponent
   ],
   imports: [

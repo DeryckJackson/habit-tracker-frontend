@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Habit } from '../data-types';
-import { HabitsService } from '../services/habits.service';
+import { HabitService } from '../services/habit.service';
 
 @Component({
   selector: 'app-habit-detail',
@@ -14,7 +14,7 @@ export class HabitDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private habitsService: HabitsService,
+    private habitService: HabitService,
     private location: Location
   ) { }
 
@@ -24,7 +24,7 @@ export class HabitDetailComponent implements OnInit {
 
   getHabit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.habitsService.getHabit(id)
+    this.habitService.getHabit(id)
       .subscribe(habit => this.habit = habit);
   }
 
@@ -34,7 +34,7 @@ export class HabitDetailComponent implements OnInit {
 
   save(): void {
     if (this.habit) {
-      this.habitsService.updateHabit(this.habit)
+      this.habitService.updateHabit(this.habit)
         .subscribe(() => this.goBack());
     }
   }

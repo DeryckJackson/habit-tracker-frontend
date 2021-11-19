@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HabitsService } from './habits.service';
-import { getTestHabits } from '../services/testing/test-habits';
+import { HabitService } from './habit.service';
+import { getTestHabits } from './testing/test-habits';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Habit } from '../data-types';
@@ -9,21 +9,21 @@ import { Habit } from '../data-types';
 describe('HabitsService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
-  let service: HabitsService
+  let service: HabitService
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       // Import the HttpClient mocking services
       imports: [HttpClientTestingModule],
       // Provide the service-under-test
-      providers: [HabitsService]
+      providers: [HabitService]
     });
 
     // Inject the http, test controller, and service-under-test
     // as they will be referenced by each test.
     httpClient = TestBed.inject(HttpClient);
     httpTestingController = TestBed.inject(HttpTestingController);
-    service = TestBed.inject(HabitsService);
+    service = TestBed.inject(HabitService);
   });
 
   afterEach(() => {
@@ -38,7 +38,7 @@ describe('HabitsService', () => {
   describe('#getHabits', () => {
     let expectedHabits: Habit[];
     beforeEach(() => {
-      service = TestBed.inject(HabitsService)
+      service = TestBed.inject(HabitService)
       expectedHabits = getTestHabits();
     })
 
