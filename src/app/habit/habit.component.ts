@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Habit } from '../data-types';
-import { HabitsService } from '../services/habits.service';
+import { HabitService } from '../services/habit.service';
 
 @Component({
-  selector: 'app-habits',
-  templateUrl: './habits.component.html',
-  styleUrls: ['./habits.component.scss']
+  selector: 'app-habit',
+  templateUrl: './habit.component.html',
+  styleUrls: ['./habit.component.scss']
 })
-export class HabitsComponent implements OnInit {
+export class HabitComponent implements OnInit {
   habits: Habit[] = [];
   weekdays = ['Sat', 'Fri', 'Thu', 'Wed', 'Tue', 'Mon', 'Sun'];
 
-  constructor(private habitsService: HabitsService) { }
+  constructor(private habitService: HabitService) { }
 
   ngOnInit(): void {
     const currentDay = Date().slice(0, 3);
@@ -24,7 +24,7 @@ export class HabitsComponent implements OnInit {
   }
 
   getHabits(): void {
-    this.habitsService.getHabits()
+    this.habitService.getHabits()
       .subscribe(habits => this.habits = habits)
   }
 

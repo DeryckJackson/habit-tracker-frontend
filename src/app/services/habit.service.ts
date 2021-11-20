@@ -7,7 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class HabitsService {
+export class HabitService {
   constructor(private http: HttpClient) { }
 
   readonly habitsUrl = 'api/habits'

@@ -1,9 +1,12 @@
+import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { HabitsComponent } from './habits/habits.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import { HabitsService } from 'src/app/services/habits.service'
+
+@Component({ selector: 'router-outlet', template: '' })
+class RouterOutletStubComponent {
+}
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,6 +16,7 @@ describe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
+        RouterOutletStubComponent,
         TopBarComponent
       ],
     }).compileComponents();

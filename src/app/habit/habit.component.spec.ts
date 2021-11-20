@@ -1,15 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClientModule } from '@angular/common/http';
-import { HabitsComponent } from './habits.component';
+import { HabitComponent } from './habit.component';
 import { Habit } from '../data-types'
-import { HabitsService } from '../services/habits.service';
+import { HabitService } from '../services/habit.service';
 import { getTestHabits } from '../services/testing/test-habits';
 import { of } from 'rxjs';
 
 describe('HabitsComponent', () => {
-  let component: HabitsComponent;
-  let fixture: ComponentFixture<HabitsComponent>;
+  let component: HabitComponent;
+  let fixture: ComponentFixture<HabitComponent>;
   let getHabitsSpy;
   const HABITS = getTestHabits()
 
@@ -19,11 +18,11 @@ describe('HabitsComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      declarations: [HabitsComponent],
-      providers: [{ provide: HabitsService, useValue: habitsService }]
+      declarations: [HabitComponent],
+      providers: [{ provide: HabitService, useValue: habitsService }]
     }).compileComponents()
       .then(() => {
-        fixture = TestBed.createComponent(HabitsComponent);
+        fixture = TestBed.createComponent(HabitComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
       })

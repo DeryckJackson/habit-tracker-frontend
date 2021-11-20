@@ -1,8 +1,8 @@
 <div class="card my-2 overflow-auto">
   <div class="card-body">
     <h5 class="card-title">Habits</h5>
-    <table class="table table-bordered text-center">
-      <thead>
+    <table class="table text-center">
+      <thead class="table-dark">
         <tr>
           <th scope="col">Name</th>
           <th scope="col" *ngFor="let day of weekdays">{{day}}</th>
@@ -10,7 +10,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let habit of habits">
-          <th scope="row">{{habit.name}}</th>
+          <th class="align-middle" scope="row">
+            <a routerLink="/habits/{{habit.id}}">
+              {{habit.name}}
+            </a>
+          </th>
           <td *ngFor="let index of createRange(7)">
             <button class="btn btn-secondary" (click)="toggleEntryValue(habit, index)">
               <ng-template *ngIf="habit.entryList[index].value == 1; then thenBlock; else elseBlock"></ng-template>
